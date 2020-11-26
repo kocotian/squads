@@ -16,10 +16,11 @@
 				You need to <b>log in</b>.
 			</p>
 			<center>
-				<form>
-					<input type="text" name="login" /><br />
-					<input type="password" name="passwd" /><br />
+				<form action="auth.php" method="POST">
+					<input type="text" placeholder="username" name="username" /><br />
+					<input type="password" placeholder="password" name="password" /><br />
 					<input type="submit" value="Log in" name="submit" />
+					<input class="red" type="button" value="Register" name="register" />
 				</form>
 			</center>
 		</div>
