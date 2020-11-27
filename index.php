@@ -23,6 +23,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="styles/styles.css" />
+		<link rel="stylesheet" href="styles/forms.css" />
 		<title>Nevada Squads</title>
 	</head>
 	<html>
@@ -32,6 +33,7 @@
 				Welcome to the <b>Nevada Squads</b>, a privacy oriented e-learning platform
 			</p>
 			<center>You are logged in as <b><?= $userdata['username'] ?></b>. <a href="logout.php">Logout</a></center>
+			<?= isset($_GET['err'])  ? '<br /><br /><center class="t_red t_large">'   . urldecode($_GET['err'])  . '</center><br />' : "" ?>
 			<br />
 			<h1>Courses</h1>
 			<p>
@@ -73,9 +75,14 @@
 			</p>
 			<p>
 				<h2 class="t_blue">Course invites</h2>
+				You don't have any course invites yet.
 			</p>
 			<p>
 				<h2 class="t_yellow">Join course</h2>
+				<form action="joinCourse.php" method="GET">
+					<input type="text" name="id" placeholder="Course ID" />
+					<input class="t_black yellow" type="submit" name="submit" />
+				</form>
 			</p>
 			<?= $copyrightchunk ?>
 		</div>

@@ -40,6 +40,8 @@
 			<p>
 				<?= $course['description'] ?><br />
 				Created by <b><?= userAccount::idToUsername($course['creatorId']) ?></b> in <?= $course['creationDate'] ?>
+				<br /><br />
+				CID: <b><?= substr(sha1($course['id']), 0, 4) . $course['id'] ?></b>
 			</p>
 			<h3 class="t_blue">Course files:</h3>
 			<h3 class="t_blue">Course tests:</h3>

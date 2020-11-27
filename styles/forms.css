@@ -1,5 +1,6 @@
 form > a > input, form > div > input, form > input {
-	margin: 9px;
+	margin: 9px 0px;
+	margin-right: 3px;
 	padding: 9px;
 	color: #ebdbb2;
 	background-color: #070707;
