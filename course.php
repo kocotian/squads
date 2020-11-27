@@ -43,7 +43,20 @@
 				<br /><br />
 				CID: <b><?= substr(sha1($course['id']), 0, 4) . $course['id'] ?></b>
 			</p>
-			<h3 class="t_blue">Course files:</h3>
+			<h3 class="t_blue">Course content:</h3>
+			<?php
+				$contents = db::query("SELECT * FROM contents WHERE courseId=:courseId", [':courseId' => $course['id']]);
+				if (!count($contents))
+					echo "Course doesn't have any content yet";
+				else
+				foreach ($contents as $content) {
+					echo '<a class="clearlink" href="content.php?id=' . $content['id'] . '"><div class="card">
+						<b class="larger">' . $content['title'] . '</b><br />
+						' . substr(strip_tags($content['content']), 0, 100) . (strlen(strip_tags($content['content'])) > 100 ? '...' : '') . '<br />
+						Created by <b>' . userAccount::idToUsername($content['creatorId']) . '</b>
+					</div></a>';
+				}
+			?>
 			<h3 class="t_blue">Course tests:</h3>
 			<?php
 				$tests = db::query("SELECT * FROM tests WHERE courseId=:courseId", [':courseId' => $course['id']]);
