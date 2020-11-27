@@ -30,7 +30,7 @@
 		<div class="container">
 			<h1 class="t_red">Nevada Squads</h1>
 			<p class="t_center">
-				Welcome to the <b>Nevada Squads</b>, a privacy oriented e-learning platform
+				Welcome to the <b>Nevada Squads</b>, a less bloated, privacy oriented and open source e-learning platform
 			</p>
 			<center>You are logged in as <b><?= $userdata['username'] ?></b>. <a href="logout.php">Logout</a></center>
 			<?= isset($_GET['err'])  ? '<br /><br /><center class="t_red t_large">'   . urldecode($_GET['err'])  . '</center><br />' : "" ?>
