@@ -41,7 +41,7 @@ a.clearlink {
 
 .card {
 	background-color: #121212;
-	padding: 21px 18px;
+	padding: 15px 18px;
 }
 
 a > div {

@@ -43,6 +43,20 @@
 			</p>
 			<h3 class="t_blue">Course files:</h3>
 			<h3 class="t_blue">Course tests:</h3>
+			<?php
+				$tests = db::query("SELECT * FROM tests WHERE courseId=:courseId", [':courseId' => $course['id']]);
+				if (!count($tests))
+					echo "Course doesn't have any tests yet";
+				else
+				foreach ($tests as $test) {
+					echo '<a class="clearlink" href="test.php?id=' . $test['id'] . '"><div class="card">
+						<b class="larger">' . $test['title'] . '</b><br />
+						' . $test['description'] . '<br />
+						Created by <b>' . userAccount::idToUsername($test['creatorId']) . '</b>
+					</div></a>';
+				}
+			?>
+
 			<?= $copyrightchunk ?>
 		</div>
 	</html>

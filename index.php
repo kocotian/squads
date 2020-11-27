@@ -35,7 +35,6 @@
 			<br />
 			<h1>Courses</h1>
 			<p>
-
 				<h2 class="t_green">Created courses</h2>
 				<?php
 					$createdcs = db::query("SELECT * FROM courses WHERE creatorId=:creatorId", [':creatorId' => $userId]);
@@ -51,16 +50,32 @@
 				?>
 			</p>
 			<p>
+				<h2 class="t_magenta">Joined courses</h2>
+				<?php
+					$joinedcs = db::query(
+						"SELECT courses.*, courseMemberships.id AS membershipId
+						FROM courses, courseMemberships
+						WHERE
+							courses.id=courseMemberships.courseId
+							AND courseMemberships.userId=:userId
+							AND courseMemberships.adminLevel=0",
+					[':userId' => $userId]);
+					if (!count($joinedcs))
+						echo "You don't have any courses yet.";
+					else
+					foreach ($joinedcs as $joined) {
+						echo '<a class="clearlink" href="course.php?id=' . $joined['id'] . '"><div class="card">
+							<b class="larger">' . $joined['title'] . '</b><span class="larger">, created by <b>' . userAccount::idToUsername($joined['creatorId']) . '</b></span><br />
+							' . $joined['description'] . '
+						</div></a>';
+					}
+				?>
+			</p>
+			<p>
 				<h2 class="t_blue">Course invites</h2>
-				ur dont have freends. f
 			</p>
 			<p>
 				<h2 class="t_yellow">Join course</h2>
-				no curses
-			</p>
-			<p>
-				<h2 class="t_magenta">Participated courses</h2>
-				bruh
 			</p>
 			<?= $copyrightchunk ?>
 		</div>
