@@ -36,15 +36,26 @@
 			<br />
 			<?php
 				$test = db::query("SELECT * FROM tests WHERE id=:id", [':id' => $_GET['id']])[0];
+				$testQuestions = db::query("SELECT * FROM testQuestions WHERE testId=:testId", [':testId' => $test['id']]);
 			?>
 			<h2 class="t_green"><?= $test['title'] ?></h2>
 			<p>
 				<?= $test['description'] ?><br />
 				Created by <b><?= userAccount::idToUsername($test['creatorId']) ?></b> in <?= $test['creationDate'] ?>
 			</p>
+			<?php
+				if ($test['creatorId'] == $userId) {
+					$testSentQuestions = db::query("SELECT * FROM testSentQuestions WHERE testId=:testId", [':testId' => $test['id']]);
+					echo '<p>
+						<h3 class="t_cyan">Completed by:</h3>';
+					foreach ($testSentQuestions as $testSentQuestion) {
+					echo '<span class="tag"><b>' . userAccount::idToUsername($testSentQuestion['userId']) . '</b> (' . $testSentQuestion['correctAnswers'] . ' / ' . count($testQuestions) . ')</span>';
+					}
+					echo '</p><br />';
+				}
+			?>
 			<form action="testSender.php?id=<?= $test['id'] ?>" method="POST">
 				<?php
-					$testQuestions = db::query("SELECT * FROM testQuestions WHERE testId=:testId", [':testId' => $test['id']]);
 					if (!count($testQuestions))
 						echo "Test doesn't have any questions yet";
 					else {
