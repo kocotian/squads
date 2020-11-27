@@ -58,6 +58,16 @@
 					</div></a>';
 				}
 			?>
+			<h3 class="t_blue">Course members:</h3>
+			<?php
+				$members = db::query("SELECT * FROM courseMemberships WHERE courseId=:courseId", [':courseId' => $course['id']]);
+				if (!count($members))
+					echo "Course doesn't have any members yet";
+				else
+				foreach ($members as $member) {
+					echo '<span class="tag">' . userAccount::idToUsername($member['userId']) . '</span>';
+				}
+			?>
 
 			<?= $copyrightchunk ?>
 		</div>

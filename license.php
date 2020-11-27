@@ -30,7 +30,10 @@ You should have received <a href="LICENSE">a copy of the GNU General Public Lice
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 			</pre>
-			<center><a href="logout.php">Logout</a></center>
+			<center>
+				<a class="clearlink tag" href="https://git.kocotian.pl/squads">Source code</a>
+				<a class="clearlink tag" href="LICENSE">LICENSE</a>
+			</center>
 			<?= $copyrightchunk ?>
 		</div>
 	</html>

@@ -44,6 +44,12 @@ a.clearlink {
 	padding: 21px 18px;
 }
 
+.tag {
+	background-color: #121212;
+	padding: 6px 9px;
+	margin: 3px;
+}
+
 a > div {
 	color: #ebdbb2;
 }
