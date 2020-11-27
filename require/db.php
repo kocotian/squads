@@ -4,17 +4,13 @@ class db
 {
 	private static function connect()
 	{
-		try
-		{
-			$dbCredentials = require("../../squadsdb.php"); /* squadsdb file is in parent of main squads directory 4 security reasons, refer to README */
-			$pdo = new PDO("mysql:host={$dbCredentials['host']};dbname={$dbCredentials['database']};charset=utf8", $dbCredentials['username'], $dbCredentials['password'], [
+		try {
+			$dbCredentials = require("../squadsdb.php"); /* squadsdb file is in parent of main squads directory 4 security reasons, refer to README */
+			return new PDO("mysql:host={$dbCredentials['host']};dbname={$dbCredentials['database']};charset=utf8", $dbCredentials['username'], $dbCredentials['password'], [
 				PDO::ATTR_EMULATE_PREPARES => false,
 				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 			]);
-			return $pdo;
-		}
-		catch(PDOException $error)
-		{
+		} catch(PDOException $error) {
 			exit("Database error");
 		}
 	}
@@ -23,10 +19,7 @@ class db
 	{
 		$statement = self::connect() -> prepare($query);
 		$statement -> execute($parameters);
-		if(explode(' ', $query)[0] == 'SELECT')
-		{
-			$data = $statement -> fetchAll();
-			return $data;
-		}
+		if (explode(' ', $query)[0] == 'SELECT')
+			return $statement -> fetchAll();
 	}
 }
