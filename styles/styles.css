@@ -10,31 +10,47 @@
     font-style: normal;
 }
 
-html
-{
+html {
 	background: #000000;
 	color: #ebdbb2;
 	font-family: 'Linux Biolinium', sans-serif;
 }
 
-div.container
-{
+div.container {
 	max-width: 900px;
 	width: calc(100% - 24px);
 	margin: auto;
 	padding: 12px;
 }
 
-h1
-{
+h1 {
 	text-align: center;
 }
 
-a
-{
+a {
 	color: #a89984;
 	font-weight: bold;
 }
+
+a.clearlink {
+	color: unset;
+	font-weight: unset;
+	text-decoration: none;
+}
+
+.card {
+	background-color: #121212;
+	padding: 12px 18px;
+}
+
+a > div {
+	color: #ebdbb2;
+}
+
+.small		{ font-size: 0.5em; }
+.smaller	{ font-size: 0.8em; }
+.larger		{ font-size: 1.2em; }
+.large		{ font-size: 1.5em; }
 
 .black		{ background: #1d2021; }
 .red		{ background: #cc241d; }

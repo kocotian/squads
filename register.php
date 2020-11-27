@@ -27,16 +27,15 @@
 		<div class="container">
 			<h1 class="t_red">Nevada Squads</h1>
 			<p class="t_center">
-				You need to <b>log in</b>.
+				Registration.
 			</p>
 			<center>
-				<?= isset($_GET['err'])  ? '<center class="t_red">'   . urldecode($_GET['err'])  . '</center><br />' : "" ?>
-				<?= isset($_GET['succ']) ? '<center class="t_green">' . urldecode($_GET['succ']) . '</center><br />' : "" ?>
-				<form action="auth.php" method="POST">
+				<?= isset($_GET['err']) ? '<center class="t_red">' . urldecode($_GET['err']) . '</center><br />' : "" ?>
+				<form action="reg.php" method="POST">
 					<input type="text" placeholder="username" name="username" /><br />
 					<input type="password" placeholder="password" name="password" /><br />
-					<input type="submit" value="Log in" name="submit" />
-					<a href="register.php"><input class="red" type="button" value="Register" name="register" /></a>
+					<input type="submit" value="Register" name="submit" />
+					<a href="login.php"><input class="red" type="button" value="Log in" name="login" /></a>
 				</form>
 			</center>
 			<?= $copyrightchunk ?>

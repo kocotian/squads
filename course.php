@@ -33,35 +33,16 @@
 			</p>
 			<center>You are logged in as <b><?= $userdata['username'] ?></b>. <a href="logout.php">Logout</a></center>
 			<br />
-			<h1>Courses</h1>
+			<?php
+				$course = db::query("SELECT * FROM courses WHERE id=:id", [':id' => $_GET['id']])[0];
+			?>
+			<h2 class="t_green"><?= $course['title'] ?></h2>
 			<p>
-
-				<h2 class="t_green">Created courses</h2>
-				<?php
-					$createdcs = db::query("SELECT * FROM courses WHERE creatorId=:creatorId", [':creatorId' => $userId]);
-					if (!count($createdcs))
-						echo "You don't have any courses yet.";
-					else
-					foreach ($createdcs as $created) {
-						echo '<a class="clearlink" href="course.php?id=' . $created['id'] . '"><div class="card">
-							<b class="larger">' . $created['title'] . '</b><br />
-							' . $created['description'] . '
-						</div></a>';
-					}
-				?>
+				<?= $course['description'] ?><br />
+				Created by <b><?= userAccount::idToUsername($course['creatorId']) ?></b> in <?= $course['creationDate'] ?>
 			</p>
-			<p>
-				<h2 class="t_blue">Course invites</h2>
-				ur dont have freends. f
-			</p>
-			<p>
-				<h2 class="t_yellow">Join course</h2>
-				no curses
-			</p>
-			<p>
-				<h2 class="t_magenta">Participated courses</h2>
-				bruh
-			</p>
+			<h3 class="t_blue">Course files:</h3>
+			<h3 class="t_blue">Course tests:</h3>
 			<?= $copyrightchunk ?>
 		</div>
 	</html>
